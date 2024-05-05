@@ -211,7 +211,7 @@ def main():
     st.title("The Answers of 3andaleeb ElDokki Aghany Masreya Edition")
 
     # Add a background image
-    st.image('app image.png', use_column_width=True, caption='', output_format='auto', width=None)
+    st.image('app image.jpg', use_column_width=True, caption='', output_format='auto', width=None)
 
     user_input = st.number_input("Enter the Question number", min_value=1, max_value=200, step=1)
     show_answer = st.button("Get Answer")
