@@ -2,7 +2,7 @@ name: Keep Streamlit Alive
 
 on:
   schedule:
-    - cron: '0 */4 * * *'   # every 4 hours
+    - cron: '0 */4 * * *'   # every 4 hours (UTC)
   workflow_dispatch:
 
 jobs:
@@ -12,7 +12,12 @@ jobs:
     steps:
       - name: Ping Streamlit App
         run: |
-          echo "Pinging app..."
-          curl -L -s --retry 3 --retry-delay 5 --max-time 10 \
-          -o /dev/null -w "HTTP Status: %{http_code}\n" \
-          https://andaleebeldokki2.streamlit.app
+          echo "Pinging Streamlit app..."
+          
+          curl -L -s \
+          --retry 3 \
+          --retry-delay 5 \
+          --max-time 10 \
+          -o /dev/null \
+          -w "Final HTTP Status: %{http_code}\nTotal Time: %{time_total}s\n" \
+          https://andaleebeldokki2.streamlit.app/
